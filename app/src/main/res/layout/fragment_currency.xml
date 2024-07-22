@@ -7,41 +7,35 @@
     android:background="@drawable/background_style"
     tools:context=".ui.currencyFragment.CurrencyFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_count"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/count_value"
+        style="@style/text_basic_style"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="64dp"
-        android:hint="Enter count"
+        android:layout_height="32dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="72dp"
+        android:background="@drawable/edit_text_background_style"
+        android:cursorVisible="false"
+        android:hint="@string/enter_count"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/count_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_background_style"
-            android:inputType="numberDecimal"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/spinner_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/andika"
-        android:text="Choose currency to convert"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/choose_currency"
         android:textColor="@color/white"
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="@+id/currency_codes"
         app:layout_constraintStart_toStartOf="@+id/currency_codes"
-        app:layout_constraintTop_toBottomOf="@+id/text_input_count" />
+        app:layout_constraintTop_toBottomOf="@+id/count_value" />
 
     <Spinner
         android:id="@+id/currency_codes"
@@ -49,8 +43,39 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="@+id/text_input_count"
-        app:layout_constraintStart_toStartOf="@+id/text_input_count"
+        app:layout_constraintEnd_toEndOf="@+id/count_value"
+        app:layout_constraintStart_toStartOf="@+id/count_value"
         app:layout_constraintTop_toBottomOf="@+id/spinner_description" />
+
+    <!-- решил вынести предубпреждение об ошибке в отдельный текст, а не в TextInputLayout, просто ради дизайна-->
+    <TextView
+        android:id="@+id/warning"
+        style="@style/text_basic_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:maxWidth="120dp"
+        android:text="@string/warning_text"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/convert_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/convert_button"
+        style="@style/text_basic_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="160dp"
+        android:background="@android:color/transparent"
+        android:drawableEnd="@drawable/arrow_icon"
+        android:text="@string/convert"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currency_codes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

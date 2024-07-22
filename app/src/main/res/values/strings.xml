@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">VKurrency</string>
+    <string name="app_name" translatable="false">VKurrency</string>
+    <string name="enter_count">Enter count</string>
+    <string name="choose_currency">Choose currency to convert</string>
+    <string name="convert">Convert</string>
+    <string name="warning_text">The field can not be empty and value can not be equal to zero</string>
+    <string name="at_current_moment">At the current time:</string>
 </resources>

@@ -11,8 +11,12 @@
         <item name="colorOnSecondary">@color/purple</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/black_purple</item>
-        <!-- Customize your theme here. -->
+
         <item name="android:spinnerStyle">@style/Widget.Spinner</item>
+  <!--
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowEnterTransition">@android:anim/slide_in_left</item>
+        <item name="android:windowExitTransition">@android:anim/slide_out_right</item> -->
     </style>
 
     <style name="Widget.Spinner" parent="android:Widget">
@@ -20,4 +24,5 @@
         <item name="android:clickable">true</item>
     </style>
 
+    
 </resources>

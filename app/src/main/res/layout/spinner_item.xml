@@ -2,10 +2,9 @@
 <CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="60dp"
     android:layout_height="40dp"
+    style="@style/text_basic_style"
     android:textSize="16sp"
     android:textAllCaps="true"
     android:layout_gravity="center"
-    android:fontFamily="@font/andika"
-    android:textColor="@color/white"
     android:gravity="center"
     />
