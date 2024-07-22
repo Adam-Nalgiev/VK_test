@@ -8,9 +8,8 @@ import kotlinx.coroutines.launch
 
 class CurrencyViewModel : ViewModel() {
 
-    fun getCurrencyRate(baseCountryCode: String): Map<String, Float> {
+    suspend fun getCurrencyRate(baseCountryCode: String): MutableMap<String, Float> {
         var currentRates = mutableMapOf("USD" to 0f, "EUR" to 0f, "GBP" to 0f)
-            viewModelScope.launch {
                 runCatching {
                     GetCurrencyRateUseCase().execute(baseCountryCode)
                 }.fold(
@@ -20,14 +19,14 @@ class CurrencyViewModel : ViewModel() {
                         currentRates["USD"] = it.conversion_rates!!.USD
                         currentRates["EUR"] = it.conversion_rates.EUR
                         currentRates["GBP"] = it.conversion_rates.GBP
+                        Log.d("RESPONSE SUCCESS VALUE", "$currentRates")
                     },
                     onFailure = {
                         Log.d("RESPONSE FAILURE", "$it")
                         currentRates = mutableMapOf("USD" to 0f, "EUR" to 0f, "GBP" to 0f)
                     }
                 )
-            }
-            return currentRates.toMap()
+                return currentRates
         }
     }
 

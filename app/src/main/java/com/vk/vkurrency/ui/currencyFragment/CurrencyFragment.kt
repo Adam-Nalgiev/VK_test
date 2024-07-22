@@ -48,7 +48,7 @@ class CurrencyFragment : Fragment() {
                 }
                 Bundle().apply {
                     putString("countryCode", selectedItemCode)
-                    putFloat("Count", binding.countValue.text.toString().toFloat())
+                    putFloat("count", 0.15f)
                 }
                 findNavController().navigate(R.id.action_currencyFragment_to_resultFragment)
             }

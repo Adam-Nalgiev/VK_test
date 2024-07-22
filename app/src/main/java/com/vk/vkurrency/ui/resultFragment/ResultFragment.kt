@@ -31,14 +31,14 @@ class ResultFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val countryCode = Bundle().getString("countryCode", "USD")
-        val count = Bundle().getFloat("count", 0f)
+        val count = Bundle().getFloat("count", 10f)
 
         viewLifecycleOwner.lifecycleScope.launch {
 
             val currenciesMap = currencyViewModel.getCurrencyRate(countryCode)
             Log.d("VALUE 1", "$currenciesMap")
             val currenciesConverted = convert(currenciesMap, count)
-            Log.d("VALUE 2", "$currenciesConverted")
+            Log.d("VALUE 2", "$currenciesConverted, $count")
 
             binding.usdRate.text = currenciesConverted["USD"].toString()
             binding.eurRate.text = currenciesConverted["EUR"].toString()
@@ -52,7 +52,7 @@ class ResultFragment : Fragment() {
         _binding = null
     }
 
-    private fun convert(currencies: Map<String, Float>, count: Float): Map<String, Float> {
+    private fun convert(currencies: MutableMap<String, Float>, count: Float): Map<String, Float> {
         currencies.forEach { item ->
             item.value * count
         }
