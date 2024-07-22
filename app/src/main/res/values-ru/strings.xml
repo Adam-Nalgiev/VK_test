@@ -3,5 +3,5 @@
     <string name="choose_currency">Выберите валюту для конвертации</string>
     <string name="convert">Сконвертировать</string>
     <string name="warning_text">Поле не может быть пустым, а значение не должно равняться нулю</string>
-    <string name="at_current_moment">На текущее время:</string>
+    <string name="at_current_moment">Курс валют на текущее время:</string>
 </resources>

@@ -37,7 +37,6 @@ class CurrencyFragment : Fragment() {
         binding.countValue.doOnTextChanged { text, _, _, _ ->
             binding.warning.isVisible = (text == "" || text == "0")
         }
-
         binding.convertButton.setOnClickListener {
             if (binding.countValue.text.toString() == "") {
                 binding.warning.visibility = View.VISIBLE
@@ -47,7 +46,10 @@ class CurrencyFragment : Fragment() {
                     2 -> "GBP"
                     else -> "USD"
                 }
-                currencyViewModel.setData(selectedItemCode, binding.countValue.text.toString().toDouble())
+                Bundle().apply {
+                    putString("countryCode", selectedItemCode)
+                    putFloat("Count", binding.countValue.text.toString().toFloat())
+                }
                 findNavController().navigate(R.id.action_currencyFragment_to_resultFragment)
             }
         }

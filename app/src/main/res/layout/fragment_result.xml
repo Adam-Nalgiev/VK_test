@@ -7,28 +7,90 @@
     android:background="@drawable/background_style"
     tools:context=".ui.resultFragment.ResultFragment">
 
-    <TextView
-        android:id="@+id/on_current_date_text"
-        style="@style/text_basic_style"
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:text="@string/at_current_moment"
+        android:layout_margin="64dp"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_background_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/current_date"
-        style="@style/text_basic_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:text="14.54.2004"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/on_current_date_text" />
+        <TextView
+            android:id="@+id/on_current_date_text"
+            style="@style/text_basic_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:text="@string/at_current_moment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="USD"
+                style="@style/text_basic_style"
+                android:layout_margin="8dp"
+                app:drawableStartCompat="@drawable/usa_flag_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="EUR"
+                style="@style/text_basic_style"
+                android:layout_margin="8dp"
+                app:drawableStartCompat="@drawable/eu_flag_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="GBP"
+                style="@style/text_basic_style"
+                android:layout_margin="8dp"
+                app:drawableStartCompat="@drawable/uk_flag_icon" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/usd_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLength="9"
+                android:text="asdwgd789"
+                style="@style/text_basic_style"
+                />
+            <TextView
+                android:id="@+id/eur_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="asdwd"
+                android:maxLength="9"
+                android:gravity="center"
+                style="@style/text_basic_style"
+                />
+            <TextView
+                android:id="@+id/gbp_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLength="9"
+                android:text="asdwd"
+                android:gravity="center"
+                style="@style/text_basic_style"
+                />
+        </TableRow>
+
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

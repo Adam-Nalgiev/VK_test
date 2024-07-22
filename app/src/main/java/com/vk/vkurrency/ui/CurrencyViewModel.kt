@@ -4,30 +4,15 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vk.vkurrency.domain.GetCurrencyRateUseCase
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class CurrencyViewModel : ViewModel() {
-    // Единственный ViewModel т.к. проект прост. Вынесен для удобства вне пакетов, потому что является общим и связующим для обеих фрагментов
 
-    private var _currentCountryCodeStateFlow = MutableStateFlow<String?>(null)
-    val currentCountryCodeStateFlow = _currentCountryCodeStateFlow.asStateFlow()
-
-    private var _currentCountStateFlow = MutableStateFlow<Double?>(null)
-    val currentCountStateFlow = _currentCountStateFlow.asStateFlow()
-
-    fun setData(currencyCode: String, count: Double) {
-        _currentCountryCodeStateFlow.value = currencyCode
-        _currentCountStateFlow.value = count
-    }
-
-    fun getCurrencyRate(): Map<String, Float> {
+    fun getCurrencyRate(baseCountryCode: String): Map<String, Float> {
         var currentRates = mutableMapOf("USD" to 0f, "EUR" to 0f, "GBP" to 0f)
-        if (currentCountryCodeStateFlow.value != null && currentCountStateFlow.value != null) {
             viewModelScope.launch {
                 runCatching {
-                    GetCurrencyRateUseCase().execute(currentCountryCodeStateFlow.value!!)
+                    GetCurrencyRateUseCase().execute(baseCountryCode)
                 }.fold(
                     onSuccess = {
                         Log.d("RESPONSE SUCCESS", "$it")
@@ -43,10 +28,6 @@ class CurrencyViewModel : ViewModel() {
                 )
             }
             return currentRates.toMap()
-        } else {
-            currentRates.forEach { item -> currentRates.remove(item.key) }
-            return currentRates.toMap()
         }
     }
 
-}
