@@ -17,7 +17,6 @@ class ResultViewModel : ViewModel() {
                 currentRates["USD"] = it.conversion_rates!!.USD
                 currentRates["EUR"] = it.conversion_rates.EUR
                 currentRates["GBP"] = it.conversion_rates.GBP
-                Log.d("RESPONSE SUCCESS VALUE", "$currentRates")
             },
             onFailure = {
                 Log.d("RESPONSE FAILURE", "$it")
