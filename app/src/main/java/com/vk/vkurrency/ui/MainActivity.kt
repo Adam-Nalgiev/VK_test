@@ -12,4 +12,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
     }
+    companion object{
+        const val CURRENCY_KEY = "currency"
+        const val COUNT_KEY = "count"
+    }
 }

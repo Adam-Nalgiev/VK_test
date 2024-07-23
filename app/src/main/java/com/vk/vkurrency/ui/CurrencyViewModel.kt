@@ -7,6 +7,8 @@ import com.vk.vkurrency.domain.GetCurrencyRateUseCase
 import kotlinx.coroutines.launch
 
 class CurrencyViewModel : ViewModel() {
+    var str = ""
+    var count = 0f
 
     suspend fun getCurrencyRate(baseCountryCode: String): MutableMap<String, Float> {
         var currentRates = mutableMapOf("USD" to 0f, "EUR" to 0f, "GBP" to 0f)

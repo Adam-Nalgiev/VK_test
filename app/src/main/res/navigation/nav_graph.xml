@@ -12,15 +12,16 @@
         tools:layout="@layout/fragment_currency" >
         <action
             android:id="@+id/action_currencyFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            app:destination="@id/resultFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/slide_in_left">
+        </action>
+
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.vk.vkurrency.ui.resultFragment.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" >
-        <action
-            android:id="@+id/action_resultFragment_to_currencyFragment"
-            app:destination="@id/currencyFragment" />
     </fragment>
 </navigation>
