@@ -1,15 +1,14 @@
 package com.vk.vkurrency.ui.resultFragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.vk.vkurrency.R
 import com.vk.vkurrency.databinding.FragmentResultBinding
-import com.vk.vkurrency.ui.CurrencyViewModel
 import com.vk.vkurrency.ui.MainActivity
 import kotlinx.coroutines.launch
 
@@ -17,7 +16,7 @@ class ResultFragment : Fragment() {
 
     private var _binding: FragmentResultBinding? = null
     private val binding get() = _binding!!
-    private val currencyViewModel: CurrencyViewModel by viewModels()
+    private val resultViewModel: ResultViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,19 +31,24 @@ class ResultFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {
+
             val currency = arguments?.getString(MainActivity.CURRENCY_KEY)
             val count = arguments?.getFloat(MainActivity.COUNT_KEY)
+
             if (currency != null && count != null) {
-                val currenciesMap = currencyViewModel.getCurrencyRate(currency)
-                Log.d("VALUE 1", "$currenciesMap")
+
+                val currenciesMap = resultViewModel.getCurrencyRate(currency)
                 val currenciesConverted = convert(currenciesMap, count)
-                Log.d("VALUE 2", "$currenciesConverted, $count")
+
+                if (currenciesMap.isEmpty()) {
+                    binding.onCurrentTimeText.setText(R.string.error)
+                }
 
                 binding.usdRate.text = currenciesConverted["USD"].toString()
                 binding.eurRate.text = currenciesConverted["EUR"].toString()
                 binding.gbpRate.text = currenciesConverted["GBP"].toString()
             }else{
-                Log.d("ERROR", "NULL ERROR")
+                binding.onCurrentTimeText.setText(R.string.error)
             }
         }
 

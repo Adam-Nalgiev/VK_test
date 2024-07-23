@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/on_current_date_text"
+            android:id="@+id/on_current_time_text"
             style="@style/text_basic_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 android:gravity="center"
-                android:text="USD"
+                android:text="@string/usd"
                 style="@style/text_basic_style"
                 android:layout_margin="8dp"
                 app:drawableStartCompat="@drawable/usa_flag_icon" />
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 android:gravity="center"
-                android:text="EUR"
+                android:text="@string/eur"
                 style="@style/text_basic_style"
                 android:layout_margin="8dp"
                 app:drawableStartCompat="@drawable/eu_flag_icon" />
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 android:gravity="center"
-                android:text="GBP"
+                android:text="@string/gbp"
                 style="@style/text_basic_style"
                 android:layout_margin="8dp"
                 app:drawableStartCompat="@drawable/uk_flag_icon" />
@@ -67,7 +67,6 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:maxLength="9"
-                android:text="asdwgd789"
                 style="@style/text_basic_style"
                 />
             <TextView
@@ -75,7 +74,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="asdwd"
                 android:maxLength="9"
                 android:gravity="center"
                 style="@style/text_basic_style"
@@ -86,11 +84,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:maxLength="9"
-                android:text="asdwd"
                 android:gravity="center"
                 style="@style/text_basic_style"
                 />
         </TableRow>
 
     </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,6 @@
             app:enterAnim="@android:anim/slide_out_right"
             app:exitAnim="@android:anim/slide_in_left">
         </action>
-
     </fragment>
     <fragment
         android:id="@+id/resultFragment"

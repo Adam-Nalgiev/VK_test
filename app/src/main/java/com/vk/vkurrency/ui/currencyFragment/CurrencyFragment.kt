@@ -1,7 +1,6 @@
 package com.vk.vkurrency.ui.currencyFragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,18 +9,15 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.vk.vkurrency.R
 import com.vk.vkurrency.databinding.FragmentCurrencyBinding
-import com.vk.vkurrency.ui.CurrencyViewModel
 import com.vk.vkurrency.ui.MainActivity
 
 class CurrencyFragment : Fragment() {
 
     private var _binding: FragmentCurrencyBinding? = null
     private val binding get() = _binding!!
-    private val currencyViewModel: CurrencyViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,10 +45,8 @@ class CurrencyFragment : Fragment() {
                     2 -> "GBP"
                     else -> "USD"
                 }
-
-                Log.d("VALUE", "${binding.countValue.text.toString().toFloat()}")
+                //Да, лучше делать через SafeArgs
                 val bundle = bundleOf(MainActivity.CURRENCY_KEY to selectedItemCode, MainActivity.COUNT_KEY to binding.countValue.text.toString().toFloat())
-
                 findNavController().navigate(R.id.action_currencyFragment_to_resultFragment, bundle)
             }
         }
